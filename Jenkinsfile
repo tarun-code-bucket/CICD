@@ -6,7 +6,8 @@ pipeline{
         stage('stack-execution'){
             steps{
                 withAWS(role: 'AopsJenkins', region: 'us-east-1'){
-                        sudo sh 'scripts/deploy1.sh'
+                        sh "chmod +x -R ${env.WORKSPACE}"
+                        sh 'scripts/deploy1.sh'
                     } 
             }
         }

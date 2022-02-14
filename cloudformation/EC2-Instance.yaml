@@ -17,7 +17,7 @@ Resources:
   DBTSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: !Join ["-", [DBT-security-group, dev]]
+      GroupName: !Join ["-", [DBT-security-group1, dev]]
       GroupDescription: "Allow HTTP/HTTPS and SSH inbound and outbound traffic"
       SecurityGroupIngress:
         - IpProtocol: tcp

@@ -4,7 +4,9 @@ pipeline{
         stage('stack-execution'){
             steps{
                 withAWS(role: 'AopsJenkins', region: 'us-east-1'){
-                        bash 'scripts/deploy1.sh'
+                        sh '
+                            #!/bin/bash
+                            scripts/deploy1.sh'
                     } 
             }
         }

@@ -3,6 +3,7 @@ pipeline{
     stages{
         stage('stack-execution'){
             steps{
+                    sh 'echo ${env.WORKSPACE}'
                     sh 'scripts/deploy1.sh'
             }
         }

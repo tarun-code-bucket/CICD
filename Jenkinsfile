@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('stack-execution'){
             steps{
-                withAWS(role: 'admin-access', region: 'us-east-1'){
+                withAWS(role: 'AopsJenkins', region: 'us-east-1'){
                         sh 'scripts/deploy1.sh'
                     } 
             }

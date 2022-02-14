@@ -9,8 +9,8 @@ Resources:
       InstanceType: t2.micro
       Tags :
           - Key: Name
-          - Value: AopsDBTInstance
-      KeyName: Aops_Jenkins # <-- Change to use your key-pair name
+            Value: AopsDBTInstance
+      KeyName: Aops_Jenkins 
       SecurityGroupIds:
         - !Ref DBTSecurityGroup
 

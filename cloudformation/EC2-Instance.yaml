@@ -37,20 +37,20 @@ Resources:
           ToPort: 5439
           CidrIp: 0.0.0.0/0
   
-    UserData:
-      Fn::Base64:
-        !Sub |
-          #!/bin/bash
-          echo "Updating the instance."
-          yum update -y
-          python -m install pip install --upgrade pip
+      UserData:
+        Fn::Base64:
+          !Sub |
+            #!/bin/bash
+            echo "Updating the instance."
+            yum update -y
+            python -m install pip install --upgrade pip
 
-          echo "Install the DBT."
-          pip install dbt-core dbt-redshift
-          
-          echo "Create the dir for project."
-          sudo mkdir dbtAnalyticsProject
-          cd dbtAnalyticsProject
+            echo "Install the DBT."
+            pip install dbt-core dbt-redshift
+            
+            echo "Create the dir for project."
+            sudo mkdir dbtAnalyticsProject
+            cd dbtAnalyticsProject
 
-          echo "Initialize the dbt dir."
-          dbt  init
+            echo "Initialize the dbt dir."
+            dbt  init

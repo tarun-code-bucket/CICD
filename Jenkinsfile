@@ -60,5 +60,13 @@ pipeline{
                     } 
             }
         }
+        stage('delete-stack'){
+            steps{
+                    withAWS(role: 'AopsJenkins', region: 'us-east-1'){
+                        sh "chmod +x -R ${env.WORKSPACE}"
+                        sh 'scripts/delete.sh ${STACK_NAME} ${REGION}'
+                    } 
+            }
+        }
     }
 }

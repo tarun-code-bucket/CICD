@@ -5,10 +5,7 @@ pipeline{
     stages{
         stage('stack-execution'){
             steps{
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
+                withAWS(credentials: 'aops_aws_creds', region: 'us-east-1'){
                         sh 'scripts/deploy1.sh'
                     } 
             }

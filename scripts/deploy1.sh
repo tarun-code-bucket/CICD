@@ -9,4 +9,4 @@ aws cloudformation deploy \
     --template-file cloudformation/$TEMPLATE_NAME \
     --parameter-overrides file://parameters/$PARAMETERS_FILE_NAME \
     --capabilities CAPABILITY_NAMED_IAM \
-    --region $REGION
+    --region "us-east-1"

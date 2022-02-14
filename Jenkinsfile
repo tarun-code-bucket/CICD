@@ -17,38 +17,17 @@ pipeline{
         )
         choice(
         name: 'ACTION',
-        choices: ['create-changeset', 'execute-changeset', 'deploy-stack', 'delete-stack'],
+        choices: ['deploy-stack', 'delete-stack'],
         description: 'CloudFormation Actions'
         )
-        booleanParam(name: 'TOGGLE', defaultValue: false, description: 'Are you sure you want to perform this action?')
     }
 
     stages{
-        stage('action') {
-            when {
-                expression { params.ACTION == 'create-changeset' || params.ACTION == 'execute-changeset' || params.ACTION == 'deploy-stack' || params.ACTION == 'delete-stack'}
-            }
-            steps {
-                ansiColor('xterm') {
-                    script {
-                        if (!params.TOGGLE) {
-                            currentBuild.result = 'ABORTED' //If you do not set the toggle flag to true before executing the build action, it will automatically abort the pipeline for any action.
-                            } else {
-                                if (params.ACTION == 'create-changeset') {
-                                    env.CHANGESET_MODE = false
-                                } else {
-                                    env.CHANGESET_MODE = true
-                                }
-                            }
-                        }
-                    }
-                }
-        }
         stage('stack-execution'){
             steps{
                     withAWS(role: 'AopsJenkins', region: 'us-east-1'){
                         sh "chmod +x -R ${env.WORKSPACE}"
-                        sh 'scripts/deploy1.sh ${STACK_NAME} ${PARAMETERS_FILE_NAME} ${TEMPLATE_NAME} ${CHANGESET_MODE} ${REGION}'
+                        sh 'scripts/deploy1.sh ${STACK_NAME} ${PARAMETERS_FILE_NAME} ${TEMPLATE_NAME} ${REGION}'
                     } 
             }
         }
@@ -56,7 +35,7 @@ pipeline{
             steps{
                     withAWS(role: 'AopsJenkins', region: 'us-east-1'){
                         sh "chmod +x -R ${env.WORKSPACE}"
-                        sh 'scripts/deploy1.sh ${STACK_NAME} ${PARAMETERS_FILE_NAME} ${TEMPLATE_NAME} ${CHANGESET_MODE} ${REGION}'
+                        sh 'scripts/deploy1.sh ${STACK_NAME} ${PARAMETERS_FILE_NAME} ${TEMPLATE_NAME} ${REGION}'
                     } 
             }
         }

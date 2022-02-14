@@ -5,7 +5,7 @@
 
 
 aws cloudformation deploy \
-    --stack-name "Aops stack" \
+    --stack-name "AopsStack" \
     --template-file ../cloudformation/EC2-Instance.yaml\
     --capabilities "JenkinsUser" \
     --region "us-east-1"

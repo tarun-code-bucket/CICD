@@ -6,7 +6,7 @@
 
 aws cloudformation deploy \
     --stack-name "AopsStack" \
-    --template-file ../cloudformation/EC2-Instance.yaml\
+    --template-file cloudformation/EC2-Instance.yaml\
     --capabilities CAPABILITY_IAM \
     --parameter-overrides file://parameters/dbt-deploy-stack.properties \
     --region "us-east-1"

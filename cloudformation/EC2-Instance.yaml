@@ -7,6 +7,9 @@ Resources:
     Properties:
       ImageId: ami-0d5eff06f840b45e9 # ImageID valid only in us-east-1 region
       InstanceType: t2.micro
+      Tags :
+          - Key: Name
+          - Value: AopsDBTInstance
       KeyName: Aops_Jenkins # <-- Change to use your key-pair name
       SecurityGroupIds:
         - !Ref DBTSecurityGroup

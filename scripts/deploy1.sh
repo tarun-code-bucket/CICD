@@ -10,3 +10,4 @@ aws cloudformation deploy \
     --capabilities CAPABILITY_IAM \
     --parameter-overrides file://parameters/dbt-deploy-stack.properties \
     --region "us-east-1"
+    --no-execute-changeset

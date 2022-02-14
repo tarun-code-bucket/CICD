@@ -12,7 +12,7 @@ Resources:
             Value: AopsDBTInstance
       KeyName: Aops_Jenkins 
       SecurityGroupIds:
-        - !Ref DBTSecurityGroup12
+        - !Ref DBTSecurityGroup17
       UserData:
         Fn::Base64: !Sub |
           #!/bin/bash
@@ -31,10 +31,10 @@ Resources:
           echo "Initialize the dbt dir."
           sudo dbt  init
 
-  DBTSecurityGroup12:
+  DBTSecurityGroup17:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: !Join ["-", [DBT-security-group12, dev]]
+      GroupName: !Join ["-", [DBT-security-group17, dev]]
       GroupDescription: "Allow HTTP/HTTPS and SSH inbound and outbound traffic"
       SecurityGroupIngress:
         - IpProtocol: tcp

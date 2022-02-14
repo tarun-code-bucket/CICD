@@ -12,7 +12,7 @@ Resources:
             Value: AopsDBTInstance
       KeyName: Aops_Jenkins 
       SecurityGroupIds:
-        - !Ref DBTSecurityGroup
+        - !Ref DBTSecurityGroup12
       UserData:
         Fn::Base64: !Sub |
           #!/bin/bash
@@ -30,7 +30,7 @@ Resources:
           echo "Initialize the dbt dir."
           dbt  init
 
-  DBTSecurityGroup:
+  DBTSecurityGroup12:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupName: !Join ["-", [DBT-security-group, dev]]

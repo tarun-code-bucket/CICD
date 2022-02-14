@@ -31,13 +31,4 @@ pipeline{
                     } 
             }
         }
-        stage('create-changeset'){
-            steps{
-                    withAWS(role: 'AopsJenkins', region: 'us-east-1'){
-                        sh "chmod +x -R ${env.WORKSPACE}"
-                        sh 'scripts/deploy1.sh ${STACK_NAME} ${PARAMETERS_FILE_NAME} ${TEMPLATE_NAME} ${REGION}'
-                    } 
-            }
-        }
-    }
 }

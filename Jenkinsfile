@@ -2,9 +2,9 @@ pipeline{
     agent any
 
     parameters {
-        string(name: 'STACK_NAME', defaultValue: 'example-stack', description: 'Enter the CloudFormation Stack Name.')
-        string(name: 'PARAMETERS_FILE_NAME', defaultValue: 'example-stack-parameters.properties', description: 'Enter the Parameters File Name (Must contain file extension type *.properties)')
-        string(name: 'TEMPLATE_NAME', defaultValue: 'S3-Bucket.yaml', description: 'Enter the CloudFormation Template Name (Must contain file extension type *.yaml)')
+        string(name: 'STACK_NAME', defaultValue: 'aops-dbt-stack', description: 'Enter the CloudFormation Stack Name.')
+        string(name: 'PARAMETERS_FILE_NAME', defaultValue: 'dbt-deploy-stack.properties', description: 'Enter the Parameters File Name (Must contain file extension type *.properties)')
+        string(name: 'TEMPLATE_NAME', defaultValue: 'EC2-Instance.yaml', description: 'Enter the CloudFormation Template Name (Must contain file extension type *.yaml)')
         credentials(name: 'CFN_CREDENTIALS_ID', defaultValue: '', description: 'AWS Account Role.', required: true)
         choice(
         name: 'REGION',

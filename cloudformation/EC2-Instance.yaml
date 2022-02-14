@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: Part 1 - Build a webapp stack with CloudFormation
+Description: Part 1 - Build a DBT stack with CloudFormation
 
 Resources:
   WebAppInstance:
@@ -9,12 +9,12 @@ Resources:
       InstanceType: t2.micro
       KeyName: AopsJenkins # <-- Change to use your key-pair name
       SecurityGroupIds:
-        - !Ref WebAppSecurityGroup
+        - !Ref DBTSecurityGroup
 
-  WebAppSecurityGroup:
+  DBTSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: !Join ["-", [webapp-security-group, dev]]
+      GroupName: !Join ["-", [DBT-security-group, dev]]
       GroupDescription: "Allow HTTP/HTTPS and SSH inbound and outbound traffic"
       SecurityGroupIngress:
         - IpProtocol: tcp
